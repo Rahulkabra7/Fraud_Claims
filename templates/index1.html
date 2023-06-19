@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Claim Fraud Detection System</title>
+</head>
+<body style="padding: 150pt;
+            padding-left: 200pt;
+            padding-top: 50pt;
+            /* background-image: url('/templates/black_car_back.jpg'); */
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;">
+
+    <h1 style="margin: 50pt; font-size: 35pt;">Insurance Claim Fraud Detection System</h1>
+
+    <form method="GET" action="/predict_charges">
+        <!-- For fraud detection -->
+        <!-- WeekOfMonth -->
+        <label style="font-size: 15pt;font: bolder; font: bold;">Week Of Month:</label>
+            <input type = "text" name = "WeekOfMonth">
+        
+        <br>
+        <br>
+
+        <!-- AccidentArea -->
+        <label style="font-size: 15pt;font: bolder;">Accident Area:</label>
+        <label style="font-size: 13pt;font: bolder;">Urban :</label> <input type = "radio" name="AccidentArea" value = "Urban">
+        <label style="font-size: 13pt;font: bolder;">Rural :</label> <input type = "radio" name="AccidentArea" value = "Rural">
+        </select>
+        
+        <br>
+        <br>
+        
+        <!-- WeekOfMonthClaimed -->
+        <label style="font-size: 15pt;font: bolder; font: bold;">Week Of Month Claimed:</label>
+            <input type = "text" name = "WeekOfMonthClaimed">
+        
+            <br>
+            <br>
+            
+        <!-- Sex -->
+        <label style="font-size: 15pt;font: bolder;">Sex :</label>
+        <label style="font-size: 13pt;font: bolder;">Male :</label> <input type = "radio" name="Sex" value = "Male">
+        <label style="font-size: 13pt;font: bolder;">Female :</label> <input type = "radio" name="Sex" value = "Female">
+        </select>
+        
+        <br>
+        <br>
+        
+        <!-- MaritalStatus -->
+        <label style="font-size: 15pt;font: bolder;">Marital Status :</label>
+        <label style="font-size: 13pt;font: bolder;">Single :</label> <input type = "radio" name="MaritalStatus" value = "Single">
+        <label style="font-size: 13pt;font: bolder;">Married :</label> <input type = "radio" name="MaritalStatus" value = "Married">
+        <label style="font-size: 13pt;font: bolder;">Divorced :</label> <input type = "radio" name="MaritalStatus" value = "Divorced">
+        <label style="font-size: 13pt;font: bolder;">Widow :</label> <input type = "radio" name="MaritalStatus" value = "Widow">
+        </select>
+        
+        <br>
+        <br>
+        
+        <!-- Age -->
+        <label style="font-size: 15pt;font: bolder; font: bold;">Age :</label>
+            <input type = "text" name = "Age">
+        
+            <br>
+            <br>
+            
+        <!-- Fault -->
+        <label style="font-size: 15pt;font: bolder;">Fault :</label>
+        <label style="font-size: 13pt;font: bolder;">Policy Holder :</label> <input type = "radio" name="Fault" value = "Policy Holder">
+        <label style="font-size: 13pt;font: bolder;">Third Party :</label> <input type = "radio" name="Fault" value = "Third Party">
+        </select>
+        
+        <br>
+        <br>
+        
+        <!-- VehicleCategory -->
+        <label style="font-size: 15pt;font: bolder;">Vehicle Category :</label>
+        <label style="font-size: 13pt;font: bolder;">Sedan :</label> <input type = "radio" name="VehicleCategory" value = "Sedan">
+        <label style="font-size: 13pt;font: bolder;">Sport :</label> <input type = "radio" name="VehicleCategory" value = "Sport">
+        <label style="font-size: 13pt;font: bolder;">Utility :</label> <input type = "radio" name="VehicleCategory" value = "Utility">
+        </select>
+        
+        <br>
+        <br>
+        
+        <!-- VehiclePrice -->
+        <label style="font-size: 15pt;font: bolder;">Vehicle Price :</label>
+        <label style="font-size: 13pt;font: bolder;">less than 20000 :</label> <input type = "radio" name="VehiclePrice" value = "less than 20000">
+        <label style="font-size: 13pt;font: bolder;">20000 to 29000 :</label> <input type = "radio" name="VehiclePrice" value = "20000 to 29000">
+        <label style="font-size: 13pt;font: bolder;">30000 to 39000 :</label> <input type = "radio" name="VehiclePrice" value = "30000 to 39000">
+        <label style="font-size: 13pt;font: bolder;">40000 to 59000 :</label> <input type = "radio" name="VehiclePrice" value = "40000 to 59000">
+        <label style="font-size: 13pt;font: bolder;">60000 to 69000 :</label> <input type = "radio" name="VehiclePrice" value = "60000 to 69000">
+        <label style="font-size: 13pt;font: bolder;">more than 69000 :</label> <input type = "radio" name="VehiclePrice" value = "more than 69000">
+        </select>
+        
+        <br>
+        <br>
+        
+        <!-- PolicyNumber -->
+        <label style="font-size: 15pt;font: bolder; font: bold;">Policy Number :</label>
+        <input type = "text" name = "PolicyNumber">
+        
+        <br>
+        <br>
+        
+        <!-- RepNumber -->
+        <label style="font-size: 15pt;font: bolder; font: bold;">Rep Number :</label>
+        <input type = "text" name = "RepNumber">
+        
+        <br>
+        <br>
+        
+        <!-- Deductible -->
+        <label style="font-size: 15pt;font: bolder; font: bold;">Deductible :</label>
+        <input type = "text" name = "Deductible">
+        
+        <br>
+        <br>
+        
+        <!-- Driver Rating -->
+        <label style="font-size: 15pt;font: bolder; font: bold;">Driver Rating :</label>
+        <input type = "text" name = "DriverRating">
+        
+        <br>
+        <br>
+        
+        <!-- Days_Policy_Accident -->
+        <label style="font-size: 15pt;font: bolder;">Days Policy Accident:</label>
+        <label style="font-size: 13pt;font: bolder;">None :</label> <input type = "radio" name="Days_Policy_Accident" value = "None">
+        <label style="font-size: 13pt;font: bolder;">1 to 7 :</label> <input type = "radio" name="Days_Policy_Accident" value = "1 to 7">
+        <label style="font-size: 13pt;font: bolder;">8 to 15 :</label> <input type = "radio" name="Days_Policy_Accident" value = "8 to 15">
+        <label style="font-size: 13pt;font: bolder;">15 to 30 :</label> <input type = "radio" name="Days_Policy_Accident" value = "15 to 30">
+        <label style="font-size: 13pt;font: bolder;">More than 30 :</label> <input type = "radio" name="Days_Policy_Accident" value = "More than 30">
+        </select>
+        
+        <br>
+        <br>
+        
+        <!-- Days_Policy_Claim -->
+
+        <label style="font-size: 15pt;font: bolder;">Days Policy Claim :</label>
+        <label style="font-size: 13pt;font: bolder;">8 to 15 :</label> <input type = "radio" name="Days_Policy_Claim" value = "8 to 15">
+        <label style="font-size: 13pt;font: bolder;">15 to 30 :</label> <input type = "radio" name="Days_Policy_Claim" value = "15 to 30">
+        <label style="font-size: 13pt;font: bolder;">more than 30 :</label> <input type = "radio" name="Days_Policy_Claim" value = "more than 30">
+        <label style="font-size: 13pt;font: bolder;">More than 30 :</label> <input type = "radio" name="Days_Policy_Claim" value = "More than 30">
+        </select>
+        
+        <br>
+        <br>
+        
+        <!-- PastNumberOfClaims -->
+        <label style="font-size: 15pt;font: bolder;">Past Number Of Claims :</label>
+        <label style="font-size: 13pt;font: bolder;">none :</label> <input type = "radio" name="PastNumberOfClaims" value = "none">
+        <label style="font-size: 13pt;font: bolder;">1 :</label> <input type = "radio" name="PastNumberOfClaims" value = "1">
+        <label style="font-size: 13pt;font: bolder;">2 to 4 :</label> <input type = "radio" name="PastNumberOfClaims" value = "2 to 4">
+        <label style="font-size: 13pt;font: bolder;">more than 4 :</label> <input type = "radio" name="PastNumberOfClaims" value = "more than 4">
+        </select>
+        
+        <br>
+        <br>
+        
+        <!-- AgeOfVehicle -->
+        <label style="font-size: 15pt;font: bolder;">Age Of Vehicle :</label>
+        <label style="font-size: 13pt;font: bolder;">new :</label> <input type = "radio" name="AgeOfVehicle" value = "new">
+        <label style="font-size: 13pt;font: bolder;">2 years :</label> <input type = "radio" name="AgeOfVehicle" value = "2 years">
+        <label style="font-size: 13pt;font: bolder;">3 years :</label> <input type = "radio" name="AgeOfVehicle" value = "3 years">
+        <label style="font-size: 13pt;font: bolder;">4 years :</label> <input type = "radio" name="AgeOfVehicle" value = "4 years">
+        <label style="font-size: 13pt;font: bolder;">5 years :</label> <input type = "radio" name="AgeOfVehicle" value = "5 years">
+        <label style="font-size: 13pt;font: bolder;">6 years :</label> <input type = "radio" name="AgeOfVehicle" value = "6 years">
+        <label style="font-size: 13pt;font: bolder;">7 years :</label> <input type = "radio" name="AgeOfVehicle" value = "7 years">
+        <label style="font-size: 13pt;font: bolder;">more than 7 :</label> <input type = "radio" name="AgeOfVehicle" value = "more than 7">
+        </select>
+        
+        <br>
+        <br>
+        
+        <!-- AgeOfPolicyHolder -->
+        <label style="font-size: 15pt;font: bolder;">Age Of Policy Holder :</label>
+        <label style="font-size: 13pt;font: bolder;">16 to 17 :</label> <input type = "radio" name="AgeOfPolicyHolder" value = "16 to 17">
+        <label style="font-size: 13pt;font: bolder;">18 to 20 :</label> <input type = "radio" name="AgeOfPolicyHolder" value = "18 to 20">
+        <label style="font-size: 13pt;font: bolder;">21 to 25 :</label> <input type = "radio" name="AgeOfPolicyHolder" value = "21 to 25">
+        <label style="font-size: 13pt;font: bolder;">26 to 30 :</label> <input type = "radio" name="AgeOfPolicyHolder" value = "26 to 30">
+        <label style="font-size: 13pt;font: bolder;">31 to 35 :</label> <input type = "radio" name="AgeOfPolicyHolder" value = "31 to 35">
+        <label style="font-size: 13pt;font: bolder;">36 to 40 :</label> <input type = "radio" name="AgeOfPolicyHolder" value = "36 to 40">
+        <label style="font-size: 13pt;font: bolder;">41 to 50 :</label> <input type = "radio" name="AgeOfPolicyHolder" value = "41 to 50">
+        <label style="font-size: 13pt;font: bolder;">51 to 65 :</label> <input type = "radio" name="AgeOfPolicyHolder" value = "51 to 65">
+        <label style="font-size: 13pt;font: bolder;">Over 65 :</label> <input type = "radio" name="AgeOfPolicyHolder" value = "Over 65">
+        </select>
+        
+        <br>
+        <br>
+        
+        <!-- PoliceReportFiled -->
+        <label style="font-size: 15pt;font: bolder;">Police Report Filed :</label>
+        <label style="font-size: 13pt;font: bolder;">No :</label> <input type = "radio" name="PoliceReportFiled" value = "No">
+        <label style="font-size: 13pt;font: bolder;">Yes :</label> <input type = "radio" name="PoliceReportFiled" value = "Yes">
+        </select>
+        
+        <br>
+        <br>
+        
+        <!-- WitnessPresent -->
+        <label style="font-size: 15pt;font: bolder;">Witness Present :</label>
+        <label style="font-size: 13pt;font: bolder;">No :</label> <input type = "radio" name="WitnessPresent" value = "No">
+        <label style="font-size: 13pt;font: bolder;">Yes :</label> <input type = "radio" name="WitnessPresent" value = "Yes">
+        </select>
+        
+        <br>
+        <br>
+        
+        <!-- AgentType -->
+        <label style="font-size: 15pt;font: bolder;">Agent Type :</label>
+        <label style="font-size: 13pt;font: bolder;">External :</label> <input type = "radio" name="AgentType" value = "External">
+        <label style="font-size: 13pt;font: bolder;">Internal :</label> <input type = "radio" name="AgentType" value = "Internal">
+        </select>
+        
+        <br>
+        <br>
+        
+        <!-- NumberOfSuppliments -->
+        <label style="font-size: 15pt;font: bolder;">Number Of Suppliments :</label>
+        <label style="font-size: 13pt;font: bolder;">none :</label> <input type = "radio" name="NumberOfSuppliments" value = "none">
+        <label style="font-size: 13pt;font: bolder;">1 to 2 :</label> <input type = "radio" name="NumberOfSuppliments" value = "1 to 2">
+        <label style="font-size: 13pt;font: bolder;">3 to 5 :</label> <input type = "radio" name="NumberOfSuppliments" value = "3 to 5">
+        <label style="font-size: 13pt;font: bolder;">more than 5 :</label> <input type = "radio" name="NumberOfSuppliments" value = "more than 5">
+        </select>
+        
+        <br>
+        <br>
+        
+        <!-- AddressChange_Claim -->
+        <label style="font-size: 15pt;font: bolder;">Address Change Claim :</label>
+        <label style="font-size: 13pt;font: bolder;">no change :</label> <input type = "radio" name="AddressChange_Claim" value = "no change">
+        <label style="font-size: 13pt;font: bolder;">under 6 months :</label> <input type = "radio" name="AddressChange_Claim" value = "under 6 months">
+        <label style="font-size: 13pt;font: bolder;">1 year :</label> <input type = "radio" name="AddressChange_Claim" value = "1 year">
+        <label style="font-size: 13pt;font: bolder;">2 to 3 years :</label> <input type = "radio" name="AddressChange_Claim" value = "2 to 3 years">
+        <label style="font-size: 13pt;font: bolder;">4 to 8 years :</label> <input type = "radio" name="AddressChange_Claim" value = "4 to 8 years">
+        </select>
+        
+        <br>
+        <br>
+        
+        <!-- NumberOfCars -->
+        <label style="font-size: 15pt;font: bolder;">Number Of Cars :</label>
+        <label style="font-size: 13pt;font: bolder;">1 vehicle :</label> <input type = "radio" name="NumberOfCars" value = "1 vehicle">
+        <label style="font-size: 13pt;font: bolder;">2 vehicles :</label> <input type = "radio" name="NumberOfCars" value = "2 vehicles">
+        <label style="font-size: 13pt;font: bolder;">3 to 4 :</label> <input type = "radio" name="NumberOfCars" value = "3 to 4">
+        <label style="font-size: 13pt;font: bolder;">5 to 8 :</label> <input type = "radio" name="NumberOfCars" value = "5 to 8">
+        <label style="font-size: 13pt;font: bolder;">more than 8 :</label> <input type = "radio" name="NumberOfCars" value = "more than 8">
+        </select>
+        
+        <br>
+        <br>
+        
+        <!-- Year -->
+        <label style="font-size: 15pt;font: bolder; font: bold;">Year :</label>
+        <input type = "text" name = "Year">
+        
+        <br>
+        <br>
+        
+        <!-- Month_inp  if not work rewrite -->
+        <label for="Month_inp">Month:</label>
+        <select id="Month_inp" name="Month_inp">
+          <option value="Jan">Jan</option>
+          <option value="Feb">Feb</option>
+          <option value="Mar">Mar</option>
+          <option value="Apr">Apr</option>
+          <option value="May">May</option>
+          <option value="Jun">Jun</option>
+          <option value="Jul">Jul</option>
+          <option value="Aug">Aug</option>
+          <option value="Sep">Sep</option>
+          <option value="Oct">Oct</option>
+          <option value="Nov">Nov</option>
+          <option value="Dec">Dec</option>
+        </select>
+        
+        <br>
+        <br>
+        
+        <!-- DayOfWeek_inp -->
+        <label style="font-size: 15pt;font: bolder;">Day Of Week :</label>
+        <label style="font-size: 13pt;font: bolder;">Sunday :</label> <input type = "radio" name="DayOfWeek_inp" value = "Sunday">
+        <label style="font-size: 13pt;font: bolder;">Monday :</label> <input type = "radio" name="DayOfWeek_inp" value = "Monday">
+        <label style="font-size: 13pt;font: bolder;">Tuesday :</label> <input type = "radio" name="DayOfWeek_inp" value = "Tuesday">
+        <label style="font-size: 13pt;font: bolder;">Wednesday :</label> <input type = "radio" name="DayOfWeek_inp" value = "Wednesday">
+        <label style="font-size: 13pt;font: bolder;">Thursday :</label> <input type = "radio" name="DayOfWeek_inp" value = "Thursday">
+        <label style="font-size: 13pt;font: bolder;">Friday :</label> <input type = "radio" name="DayOfWeek_inp" value = "Friday">
+        <label style="font-size: 13pt;font: bolder;">Saturday :</label> <input type = "radio" name="DayOfWeek_inp" value = "Saturday">
+        </select>
+        
+        <br>
+        <br>
+        
+        <!-- Make_inp -->
+        <label style="font-size: 15pt;font: bolder;"> Make: </label>
+        <label for = "Make_inp">
+        <select name = "Make_inp" id="Make_inp" style="font-size: 13pt;font: bolder;">
+                <option value = "Accura" style="font-size: 13pt;font: bolder;">Accura</option>
+                <option value = "BMW" style="font-size: 13pt;font: bolder;">BMW</option>
+                <option value = "Chevrolet" style="font-size: 13pt;font: bolder;">Chevrolet</option>
+                <option value = "Dodge" style="font-size: 13pt;font: bolder;">Dodge</option>
+                <option value = "Ferrari" style="font-size: 13pt;font: bolder;">Ferrari</option>
+                <option value = "Ford" style="font-size: 13pt;font: bolder;">Ford</option>
+                <option value = "Honda" style="font-size: 13pt;font: bolder;">Honda</option>
+                <option value = "Jaguar" style="font-size: 13pt;font: bolder;">Jaguar</option>
+                <option value = "Lexus" style="font-size: 13pt;font: bolder;">Lexus</option>
+                <option value = "Mazda" style="font-size: 13pt;font: bolder;">Mazda</option>
+                <option value = "Mercedes" style="font-size: 13pt;font: bolder;">Mercedes</option>
+                <option value = "Mercury" style="font-size: 13pt;font: bolder;">Mercury</option>
+                <option value = "Nissan" style="font-size: 13pt;font: bolder;">Nissan</option>
+                <option value = "Pontiac" style="font-size: 13pt;font: bolder;">Pontiac</option>
+                <option value = "Porsche" style="font-size: 13pt;font: bolder;">Porsche</option>
+                <option value = "Saab" style="font-size: 13pt;font: bolder;">Saab</option>
+                <option value = "Saturn" style="font-size: 13pt;font: bolder;">Saturn</option>
+                <option value = "Toyota" style="font-size: 13pt;font: bolder;">Toyota</option>
+                <option value = "VW" style="font-size: 13pt;font: bolder;">VM</option>
+        </select>
+        
+        <br>
+        <br>
+        
+        <!-- DayOfWeekClaimed_inp -->
+
+        <label style="font-size: 15pt;font: bolder;">Day Of Week Claimed :</label>
+        <label style="font-size: 13pt;font: bolder;">Sunday :</label> <input type = "radio" name="DayOfWeekClaimed_inp" value = "Sunday">
+        <label style="font-size: 13pt;font: bolder;">Monday :</label> <input type = "radio" name="DayOfWeekClaimed_inp" value = "Monday">
+        <label style="font-size: 13pt;font: bolder;">Tuesday :</label> <input type = "radio" name="DayOfWeekClaimed_inp" value = "Tuesday">
+        <label style="font-size: 13pt;font: bolder;">Wednesday :</label> <input type = "radio" name="DayOfWeekClaimed_inp" value = "Wednesday">
+        <label style="font-size: 13pt;font: bolder;">Thursday :</label> <input type = "radio" name="DayOfWeekClaimed_inp" value = "Thursday">
+        <label style="font-size: 13pt;font: bolder;">Friday :</label> <input type = "radio" name="DayOfWeekClaimed_inp" value = "Friday">
+        <label style="font-size: 13pt;font: bolder;">Saturday :</label> <input type = "radio" name="DayOfWeekClaimed_inp" value = "Saturday">
+        </select>
+        
+        <br>
+        <br>
+        
+        <!-- MonthClaimed_inp -->
+        <label style="font-size: 15pt;font: bolder;"> Month Claimed: </label>
+        <label for = "MonthClaimed_inp">
+        <select name = "MonthClaimed_inp" id="MonthClaimed_inp" style="font-size: 13pt;font: bolder;">
+                <option value = "Jan" style="font-size: 13pt;font: bolder;">January</option>
+                <option value = "Feb" style="font-size: 13pt;font: bolder;">February</option>
+                <option value = "Mar" style="font-size: 13pt;font: bolder;">March</option>
+                <option value = "Apr" style="font-size: 13pt;font: bolder;">April</option>
+                <option value = "May" style="font-size: 13pt;font: bolder;">May</option>
+                <option value = "Jun" style="font-size: 13pt;font: bolder;">June</option>
+                <option value = "Jul" style="font-size: 13pt;font: bolder;">July</option>
+                <option value = "Aug" style="font-size: 13pt;font: bolder;">August</option>
+                <option value = "Sep" style="font-size: 13pt;font: bolder;">September</option>
+                <option value = "Oct" style="font-size: 13pt;font: bolder;">October</option>
+                <option value = "Nov" style="font-size: 13pt;font: bolder;">November</option>
+                <option value = "Dec" style="font-size: 13pt;font: bolder;">December</option>
+        </select>
+
+        <!-- PolicyType_inp -->
+        <!-- <label style="font-size: 15pt;font: bolder;margin-left: 185pt">Policy Type: </label>
+        <label for = "PolicyType_inp">
+        <select name = "PolicyType_inp" id="PolicyType_inp" style="font-size: 13pt;font: bolder;">
+                <option value = "Sedan_All_Perils" style="font-size: 13pt;font: bolder;">Sedan All Perils</option>
+                <option value = "Sedan_Collision" style="font-size: 13pt;font: bolder;">Sedan Collision</option>
+                <option value = "Sedan_Liability" style="font-size: 13pt;font: bolder;">Sedan Liability</option>
+                <option value = "Sport_All_Perils" style="font-size: 13pt;font: bolder;">Sport All Perils</option>
+                <option value = "Sport_Collision" style="font-size: 13pt;font: bolder;">Sport Collision</option>
+                <option value = "Sport_Liability" style="font-size: 13pt;font: bolder;">Sport Liability</option>
+                <option value = "Utility_All_Perils" style="font-size: 13pt;font: bolder;">Utility All Perils</option>
+                <option value = "Utility_Collision" style="font-size: 13pt;font: bolder;">Utility Collision</option>
+                <option value = "Utility_Liability" style="font-size: 13pt;font: bolder;">Utility Liability</option>
+        </select> -->
+
+        <!-- BasePolicy_inp -->
+        <!-- <label style="font-size: 15pt;font: bolder;margin-left: 185pt">Base Policy: </label>
+        <label for = "BasePolicy_inp">
+        <select name = "BasePolicy_inp" id="BasePolicy_inp" style="font-size: 13pt;font: bolder;">
+                <option value = "All Perils" style="font-size: 13pt;font: bolder;">All Perils</option>
+                <option value = "Collision" style="font-size: 13pt;font: bolder;">Collision</option>
+                <option value = "Liability" style="font-size: 13pt;font: bolder;">Liability</option>
+        </select> -->
+
+
+        <input style="width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      " type = "submit" value = "SUBMIT">
+
+        <br>
+        <p style="font-size: 23pt; font: bolder;"><b>{{ prediction }}</b> </p>
+
+    </form>
+</body>
+</html>
